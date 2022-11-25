@@ -1,0 +1,56 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.kosa.myqrreder'
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.kosa.myqrreder"
+        minSdk 26
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    //뷰 바인딩을 위한 추가~
+    buildFeatures{
+        viewBinding true
+    }
+
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+    def camerax_version = "1.1.0-alpha04"
+    implementation "androidx.camera:camera-camera2:1.1.0"//CamearX의 코어 라이브러리
+    implementation "androidx.camera:camera-lifecycle:1.1.0"// 생명주기 라이브러리 !!
+    implementation "androidx.camera:camera-view:1.1.0"//뷰 관련 라이브러리(alpha로 하면안되서 그냥 자동완성에 있는놈으로 했음)
+    implementation "com.google.mlkit:barcode-scanning:17.0.2"// ML kit 라이브러리 (최신버전)
+}
